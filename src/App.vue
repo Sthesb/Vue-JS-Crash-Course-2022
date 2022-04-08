@@ -1,15 +1,15 @@
 <template>
   <h2>{{ title }}</h2>
-  <button @click="toggleModol" v-show="!showModol">toggle modol</button>
-  <div class="" v-if="showModol">
-    <Modal  @close="toggleModol" theme="sale" >
+  <!-- <button @click="toggleModol" v-show="!showModol">toggle modol</button> -->
+  <teleport to=".modals" v-if="showModol">
+    <Modal  @close="toggleModol" theme="" >
       <template v-slot:links>
         <a href="#">20% off</a>
       </template>
       <h1>Ninja Giveaway</h1>
       <p>hey ninja get your goodies while stock lasts</p>
     </Modal>
-  </div>
+  </teleport>
   
 </template>
 
@@ -26,7 +26,7 @@ export default {
       title: 'Learning VueJS',
       toogle: false,
       header: "Sign up for a giveaway",
-      showModol: false
+      showModol: true
     }
   },
   methods: {
