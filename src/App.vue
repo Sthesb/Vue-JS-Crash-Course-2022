@@ -1,6 +1,9 @@
 <template>
   <h2>{{ title }}</h2>
-  <Modal />
+  <button @click="toggleModol" v-show="!showModol">toggle modol</button>
+  <div class="" v-if="showModol">
+    <Modal :header="header" content="20% off Get it now." @close="toggleModol" theme="sale"/>
+  </div>
   
 </template>
 
@@ -15,8 +18,17 @@ export default {
   data () {
     return {
       title: 'Learning VueJS',
+      toogle: false,
+      header: "Sign up for a giveaway",
+      showModol: false
+    }
+  },
+  methods: {
+    toggleModol () {
+      this.showModol = !this.showModol
     }
   }
+  
 }
 </script>
 
