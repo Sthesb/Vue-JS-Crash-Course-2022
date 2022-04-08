@@ -1,37 +1,32 @@
 <template>
-  <h2>{{ title }}</h2>
-  <!-- <button @click="toggleModol" v-show="!showModol">toggle modol</button> -->
-  <teleport to=".modals" v-if="showModol">
-    <Modal  @close="toggleModol" theme="" >
-      <template v-slot:links>
-        <a href="#">20% off</a>
-      </template>
-      <h1>Ninja Giveaway</h1>
-      <p>hey ninja get your goodies while stock lasts</p>
-    </Modal>
-  </teleport>
+    
+    <h2>Ninja Reaction Timer</h2> <br>
+    <button class="btn btn-primary" @click="start" :disabled="isPlaying">Play</button>
+    <Block v-if="isPlaying" :delay="delay"  />
+    <Results />
   
 </template>
 
 <script>
-import Modal from './components/Modal/Modal.vue'
+import Block from './components/Block.vue'
+import Results from './components/Results.vue'
 
 export default {
   name: 'App',
-  components: {
-    Modal
-  },
+  components: { Block, Results },
   data () {
     return {
-      title: 'Learning VueJS',
-      toogle: false,
-      header: "Sign up for a giveaway",
-      showModol: true
+      isPlaying: false,
+      delay: null,
+
     }
   },
   methods: {
-    toggleModol () {
-      this.showModol = !this.showModol
+    start () {
+      this.delay = 2000 + Math.random() * 50000
+      this.isPlaying = true
+      
+
     }
   }
   
@@ -39,5 +34,14 @@ export default {
 </script>
 
 <style>
+
+#app {
+  text-align: center;
+}
+.app  h2 {
+  color: rgb(35, 0, 68);
+  text-transform: capitalize;
+}
+
 
 </style>
