@@ -4,7 +4,7 @@
     <button class="btn btn-primary" @click="start" :disabled="isPlaying">Play</button>
     <Block v-if="isPlaying" :delay="delay" @end="endGame" />
     <h4 v-if="score !== null">Reaction time: {{ score }} ms</h4>
-    <Results v-if="score !== null" :result="result" />
+    <Results v-if="score !== null" :score="score" />
   
 </template>
 
@@ -34,13 +34,7 @@ export default {
       this.isPlaying = false;
       this.score = reactionTimer;
 
-      if(reactionTimer < 300){
-        this.result = "You're a G"
-      }else if ( reactionTimer >= 300  && reactionTimer < 500){
-        this.result = "You're slow. try agin my G"
-      }else {
-        this.result = "You're Mabhena"
-      }
+      
 
 
     }
